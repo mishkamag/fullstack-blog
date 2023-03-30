@@ -1,7 +1,7 @@
 .top {
   width: 100%;
   height: 50px;
-  background-color: aqua;
+  background-color: #fff;
   position: sticky;
   top: 0;
   display: flex;
@@ -12,9 +12,50 @@
 .topLeft,
 .topRight {
   flex: 3;
-  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topIcon {
+  display: flex;
+  margin-right: 10px;
+  color: #444;
+  cursor: pointer;
+}
+
+.topIcon:hover {
+  scale: 110%;
+  color: #111;
 }
 
 .topCenter {
   flex: 6;
+}
+
+.topList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.topList > li {
+  margin-right: 20px;
+  font-weight: 300;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.topImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.topSearchIcon {
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+  margin-left: 16px;
 }
