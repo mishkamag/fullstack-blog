@@ -8,10 +8,19 @@ const Header = () => {
         <span className="largeTItle">Blog</span>
       </div>
       <img
-        src="https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        src="https://images.unsplash.com/photo-1500828131278-8de6878641b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80"
         alt=""
         className="headerImg"
       />
+      <div className="postInfo">
+        <div className="postCats">
+          <span className="postCat">Music</span>
+          <span className="postCat">Life</span>
+        </div>
+        <span className="postTitle">Lorem ipsum dolor sit amet</span>
+        <hr />
+        <span className="postDate">1 hour ago</span>
+      </div>
     </div>
   );
 };
