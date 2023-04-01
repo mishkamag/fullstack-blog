@@ -7,7 +7,7 @@ const Write = () => {
       <form className="writeForm">
         <div className="writeFromGroup">
           <label htmlFor="fileInput">
-            <AiOutlineFolderAdd size={24} />
+            <AiOutlineFolderAdd size={26} style={{ cursor: "pointer" }} />
           </label>
           <input type="file" id="fileInput" style={{ display: "none" }} />
           <input
