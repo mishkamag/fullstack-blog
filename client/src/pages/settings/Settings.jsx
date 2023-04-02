@@ -8,7 +8,7 @@ const Settings = () => {
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsUpdateTitle">Update Your Account</span>
-          <span className="settingsUpdateTitle">Delete Account</span>
+          <span className="settingsDeleteTitle">Delete Account</span>
         </div>
         <form className="settingsForm">
           <label>Profile Picture</label>
@@ -18,7 +18,7 @@ const Settings = () => {
               alt=""
             />
             <label htmlFor="fileInput">
-              <BiUserCircle />
+              <BiUserCircle className="settingsIcon" />
             </label>
             <input type="file" id="fileInput" style={{ display: "none" }} />
           </div>
