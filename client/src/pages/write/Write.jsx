@@ -4,6 +4,11 @@ import { AiOutlineFolderAdd } from "react-icons/ai";
 const Write = () => {
   return (
     <div className="write">
+      <img
+        className="writeImg"
+        src="https://webneel.com/daily/sites/default/files/images/daily/08-2018/1-nature-photography-spring-season-mumtazshamsee.preview.jpg"
+        alt=""
+      />
       <form className="writeForm">
         <div className="writeFromGroup">
           <label htmlFor="fileInput">
