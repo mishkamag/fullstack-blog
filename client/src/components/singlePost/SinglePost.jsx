@@ -1,17 +1,30 @@
 import "./singlePost.css";
+import { useLocation } from "react-router";
 import { FiEdit } from "react-icons/fi";
 import { MdOutlineDeleteForever } from "react-icons/md";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState([]);
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("http://localhost:5000/api/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://images.unsplash.com/reserve/bOvf94dPRxWu0u3QsPjF_tree.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80"
-          alt=""
-        />
+        {post.photo && <img src={post.photo} alt="" />}
+
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit amet.
+          {post.title}
           <div className="singlePostEdit">
             <FiEdit className="singlePostIcon" />
             <MdOutlineDeleteForever className="singlePostIcon" />
@@ -19,33 +32,13 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Michael</b>
+            Author: <b>{post.username}</b>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
-          tenetur. Delectus consequatur ad ut tenetur officia, debitis mollitia
-          temporibus odit distinctio ex, enim neque quos deleniti pariatur
-          libero, impedit dolorum? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Nostrum, tenetur. Delectus consequatur ad ut tenetur
-          officia, debitis mollitia temporibus odit distinctio ex, enim neque
-          quos deleniti pariatur libero, impedit dolorum? Lorem ipsum dolor sit
-          amet consectetur adipisicing elit. Nostrum, tenetur. Delectus
-          consequatur ad ut tenetur officia, debitis mollitia temporibus odit
-          distinctio ex, enim neque quos deleniti pariatur libero, impedit
-          dolorum? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Nostrum, tenetur. Delectus consequatur ad ut tenetur officia, debitis
-          mollitia temporibus odit distinctio ex, enim neque quos deleniti
-          pariatur libero, impedit dolorum? Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Nostrum, tenetur. Delectus consequatur
-          ad ut tenetur officia, debitis mollitia temporibus odit distinctio ex,
-          enim neque quos deleniti pariatur libero, impedit dolorum? Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Nostrum, tenetur.
-          Delectus consequatur ad ut tenetur officia, debitis mollitia
-          temporibus odit distinctio ex, enim neque quos deleniti pariatur
-          libero, impedit dolorum?
-        </p>
+        <p className="singlePostDesc">{post.desc}</p>
       </div>
     </div>
   );
