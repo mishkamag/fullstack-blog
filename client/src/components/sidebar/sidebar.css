@@ -44,7 +44,7 @@
   margin-bottom: 30px;
 }
 
-.sidebarList > li {
+.sidebarListItem {
   display: inline-block;
   width: 50%;
   margin-top: 10px;

@@ -3,8 +3,20 @@ import { BsFacebook } from "react-icons/bs";
 import { FaInstagramSquare } from "react-icons/fa";
 import { BsPinterest } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Sidebar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getCategory = async () => {
+      const res = await axios.get("http://localhost:5000/api/categories/");
+      setCategories(res.data);
+    };
+    getCategory();
+  }, []);
+
   return (
     <div className="sidebar">
       <div className="sidebarItem">
@@ -21,12 +33,9 @@ const Sidebar = () => {
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          <li>Life</li>
-          <li>Music</li>
-          <li>Style</li>
-          <li>Sport</li>
-          <li>Tech</li>
-          <li>Cinema</li>
+          {categories.map((category) => (
+            <li className="sidebarListItem">{category.name}</li>
+          ))}
         </ul>
       </div>
       <div className="sidebarItem">
