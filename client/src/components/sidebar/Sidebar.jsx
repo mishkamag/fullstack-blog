@@ -5,6 +5,7 @@ import { BsPinterest } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [categories, setCategories] = useState([]);
@@ -34,7 +35,9 @@ const Sidebar = () => {
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
           {categories.map((category) => (
-            <li className="sidebarListItem">{category.name}</li>
+            <Link to={`/?category=${category.name}`} className="link">
+              <li className="sidebarListItem">{category.name}</li>
+            </Link>
           ))}
         </ul>
       </div>
